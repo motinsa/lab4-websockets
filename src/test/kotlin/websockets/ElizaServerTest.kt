@@ -68,6 +68,7 @@ class ElizaOnOpenMessageHandlerToComplete(private val list: MutableList<String>,
     fun onMessage(message: String, session: Session) {
         list.add(message)
         latch.countDown()
+        
         if (list.size == 3) {
             session.basicRemote.sendText("always")
         }
